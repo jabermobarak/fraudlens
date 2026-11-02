@@ -1,0 +1,147 @@
+{
+  "scope": "Synthetic stochastic simulator. Not real-bank performance or actual savings.",
+  "python": "3.12.14",
+  "n": 40000,
+  "seed": 42,
+  "splits": {
+    "train": {
+      "rows": 22000,
+      "fraud_rate": 0.02859090909090909,
+      "start": "2026-07-01 00:00:00",
+      "end": "2026-08-15 19:57:00"
+    },
+    "calibration": {
+      "rows": 6000,
+      "fraud_rate": 0.030666666666666665,
+      "start": "2026-08-15 20:00:00",
+      "end": "2026-08-28 07:57:00"
+    },
+    "policy": {
+      "rows": 4000,
+      "fraud_rate": 0.027,
+      "start": "2026-08-28 08:00:00",
+      "end": "2026-09-05 15:57:00"
+    },
+    "test": {
+      "rows": 8000,
+      "fraud_rate": 0.031,
+      "start": "2026-09-05 16:00:00",
+      "end": "2026-09-22 07:57:00"
+    }
+  },
+  "selection": "CatBoost predeclared primary. No hyperparameter search or test-based model selection.",
+  "catboost": {
+    "average_precision": 0.38658403410011866,
+    "roc_auc": 0.8156209427743932,
+    "brier": 0.023447909708629852,
+    "precision": 0.3885135135135135,
+    "recall": 0.4637096774193548,
+    "alert_rate": 0.037,
+    "threshold": 0.21509822510316576,
+    "illustrative_cost_rub": 904281.252,
+    "confusion_matrix_tn_fp_fn_tp": [
+      7571,
+      181,
+      133,
+      115
+    ]
+  },
+  "logistic_baseline_uncalibrated": {
+    "average_precision": 0.30889485902553865,
+    "roc_auc": 0.8148713963514098,
+    "brier": 0.02464070340852261,
+    "precision": 0.31887755102040816,
+    "recall": 0.5040322580645161,
+    "alert_rate": 0.049,
+    "threshold": 0.09665451731611595,
+    "illustrative_cost_rub": 896527.164,
+    "confusion_matrix_tn_fp_fn_tp": [
+      7485,
+      267,
+      123,
+      125
+    ]
+  },
+  "no_review_cost_rub": 1450191.354,
+  "all_review_cost_rub": 2400000,
+  "policy_validation": {
+    "threshold": 0.21509822510316576,
+    "validation_cost_rub": 211664.09400000007,
+    "validation_alert_rate": 0.03675,
+    "budget": 0.1
+  },
+  "held_out_drift": [
+    {
+      "feature": "hour",
+      "psi": 0.0026365463784686657,
+      "review_distribution": false
+    },
+    {
+      "feature": "device_age_days",
+      "psi": 0.0015469326007721117,
+      "review_distribution": false
+    },
+    {
+      "feature": "account_age_days",
+      "psi": 0.0013342114883134304,
+      "review_distribution": false
+    },
+    {
+      "feature": "amount_rub",
+      "psi": 0.0009548136236510285,
+      "review_distribution": false
+    },
+    {
+      "feature": "distance_km",
+      "psi": 0.0008394800386277128,
+      "review_distribution": false
+    },
+    {
+      "feature": "new_payee",
+      "psi": 0.0003664233504907245,
+      "review_distribution": false
+    },
+    {
+      "feature": "transactions_last_hour",
+      "psi": 0.00013846976452488573,
+      "review_distribution": false
+    }
+  ],
+  "shifted_simulation_drift": [
+    {
+      "feature": "transactions_last_hour",
+      "psi": 1.932199138327955,
+      "review_distribution": true
+    },
+    {
+      "feature": "amount_rub",
+      "psi": 0.4123914210656261,
+      "review_distribution": true
+    },
+    {
+      "feature": "device_age_days",
+      "psi": 0.006805818659334684,
+      "review_distribution": false
+    },
+    {
+      "feature": "distance_km",
+      "psi": 0.004391729726815444,
+      "review_distribution": false
+    },
+    {
+      "feature": "account_age_days",
+      "psi": 0.0032144987541008582,
+      "review_distribution": false
+    },
+    {
+      "feature": "hour",
+      "psi": 0.001536376209740613,
+      "review_distribution": false
+    },
+    {
+      "feature": "new_payee",
+      "psi": 1.3503548081090835e-05,
+      "review_distribution": false
+    }
+  ]
+}
